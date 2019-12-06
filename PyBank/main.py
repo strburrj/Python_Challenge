@@ -3,6 +3,7 @@ import csv
 
 csvpath = os.path.join("PyBank/budget_data.csv")
 
+
 total_months = []
 total_revenue = []
 prev_revenue = []
@@ -32,10 +33,23 @@ with open(csvpath, newline="") as csvfile:
                 lowest_monthly = row[0]
                 lowest_dcrev = monthly_change
 
-
 print("Financial Analysis")
 print("-------------------")                   
 print(f"Total Months: {total_months}")
 print(f"Total Revenue: ${total_revenue}")
 print(f"Average Revenue Change: ${average_revenue_change}")
-print
+print(f"Greatest Increase of Revenue: ${greatest_inrev}")
+print(f"Greatest Decrease of Revenue: ${lowest_dcrev}")
+
+txtpath = os.path.join("Pybank/Summary_Analysis.txt")
+with open(txtpath, 'w', newline='') as text_file:
+
+    print("Financial Analysis", file=text_file)
+    print('-----------------------------', file=text_file)
+    print(f"Total Months: {total_months}", file=text_file)
+    print(f"Total Revenue: ${total_revenue}", file=text_file)
+    print(f"Average Revenue Change: ${average_revenue_change}", file=text_file)
+    print(f"Greatest Increase in Revenue: ${greatest_inrev})", file=text_file)
+    print(f"Greatest Decrease in Revenue: ${lowest_dcrev})",file=text_file) 
+
+csvfile.close()
